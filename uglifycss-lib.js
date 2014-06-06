@@ -426,6 +426,9 @@ var	util = require('util'),
 			// restore preserved newlines
 			content = content.replace(/___PRESERVED_NEWLINE___/g, '\n');
 
+			// Add spaces back to operators inside calc statements
+			content = content.replace(/(calc\([^\+-\/*]+)([*\/+-])([^\)]+)/g, "$1 $2 $3");
+
 			// return
 			return content;
 		},
